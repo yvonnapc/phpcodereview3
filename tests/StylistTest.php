@@ -46,7 +46,7 @@
         //Act
         $result = Stylist::getAll();
         //Assert
-        $this->assertEquals($test_stylist, $result[0]);
+        $this->assertEquals($test_stylist, $result);
       }
       function test_getAll()
       {
@@ -82,6 +82,23 @@
         $result = Stylist::getAll();
         //Assert
         $this->assertEquals([], $result);
+      }
+      function test_find()
+      {
+        //Arrange
+        $name = "Dana";
+        $id = null;
+        $test_stylist = new Stylist($name, $id);
+        $test_stylist->save();
+
+        $name2 = "Scully";
+        $id = null;
+        $test_stylist2 = new Stylist($name2, $id);
+        $test_stylist2->save();
+        //Act
+        $result = Stylist::find($test_stylist->getId());
+        //Assert
+        $this->assertEquals($test_stylist, $result);
       }
     }
 

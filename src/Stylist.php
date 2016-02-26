@@ -23,7 +23,7 @@
         }
         function save()
         {
-          $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getName()}');");
+          $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getName()}')");
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
         static function getAll()
@@ -37,6 +37,24 @@
             array_push($stylists, $new_stylist);
           }
           return $stylists;
+        }
+        static function deleteAll()
+        {
+          $GLOBALS['DB']->exec("DELETE FROM stylist;");
+        }
+        static function find($search_id)
+        {
+          $found_stylist = null;
+          $stylists = Stylist::getAll();
+          foreach($stylists as $stylist)
+            {
+              $stylist_id = $stylist->getId();
+              if($stylist_id == $search_id)
+                {
+                  $found_stylist = $stylist;
+                }
+            }
+            return $found_stylist;
         }
 
     }
