@@ -13,12 +13,14 @@
     'twig.path' => __DIR__.'/../views'
     ));
 
+
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app){
-        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
-    });
+       return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+   });
+
 
     $app->post("/stylists", function() use($app){
         $stylist = new Stylist($_POST['stylist_name']);

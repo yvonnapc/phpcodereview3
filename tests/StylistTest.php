@@ -6,6 +6,7 @@
     */
 
     require_once "src/Stylist.php";
+    require_once "src/Client.php";
 
     $server = 'mysql:host=localhost;dbname=hair_salon_test';
     $username = 'root';
@@ -14,7 +15,11 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-
+      protected function tearDown()
+      {
+        Client::deleteAll();
+        Stylist::deleteAll();
+      }
       function test_getName()
       {
         //Arrange
@@ -41,13 +46,12 @@
       {
         //Arrange
         $name = "Dana";
-        $id = null;
-        $test_stylist = new Stylist($name, $id);
+        $test_stylist = new Stylist($name);
         $test_stylist->save();
         //Act
         $result = Stylist::getAll();
         //Assert
-        $this->assertEquals($test_stylist, $result);
+        $this->assertEquals($test_stylist, $result[0]);
       }
       function test_getAll()
       {
