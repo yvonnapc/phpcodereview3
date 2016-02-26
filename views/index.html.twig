@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+   <link rel='stylesheet' href='/styles.css'>
     <meta charset="utf-8">
     <title>Hair Salon</title>
   </head>
   <body>
-      {% if stylists is not empty %}
-      <h4>Our Available Stylists:</h4>
-      <ul>
-          {% for stylist in stylists %}
-          <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
-          {% end for %}
-      </ul>
-      {% endif %}
+    <div class="container">
+        {% if stylists is not empty %}
+        <h4>Our Available Stylists:</h4>
+        <ul>
+            {% for stylist in stylists %}
+            <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+            {% end for %}
+        </ul>
+        {% endif %}
 
-      <h4>Add a Stylist here:</h4>
-        <form action="/stylists" method="post">
-            <label for="stylist_name">Stylist Name:</label>
-            <input name="stylist_name" type="text">
+        <h4>Add a Stylist here:</h4>
+          <form action="/stylists" method="post">
+              <label for="stylist_name">Stylist Name:</label>
+              <input name="stylist_name" type="text">
 
-            <button type="submit">Add</button>
-        </form>
+              <button type="submit">Add</button>
+          </form>
 
-      <h4>Clear Stylists</h4>
-        <form action="/delete_stylists" method="post">
-            <button type="submit">CLEAR</button>
-        </form>
-
+        <h4>Clear Stylists</h4>
+          <form action="/delete_stylists" method="post">
+              <button type="submit">CLEAR</button>
+          </form>
+    </div>
 
   </body>
 </html>

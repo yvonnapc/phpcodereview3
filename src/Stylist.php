@@ -1,4 +1,5 @@
 <?php
+
     class Stylist
     {
         private $name;
@@ -58,7 +59,4 @@
         }
 
     }
-
-
-
  ?>
