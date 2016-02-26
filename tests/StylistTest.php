@@ -41,7 +41,8 @@
       {
         //Arrange
         $name = "Dana";
-        $test_stylist = new Stylist($name);
+        $id = null;
+        $test_stylist = new Stylist($name, $id);
         $test_stylist->save();
         //Act
         $result = Stylist::getAll();
