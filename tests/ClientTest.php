@@ -83,13 +83,6 @@
         //Assert
         $this->assertEquals([], $result);
       }
-      function test_find()
-      {
-        //Arrange
-        $name = "Yvonna";
-        $id = null;
-        $test
-      }
 
   }
 

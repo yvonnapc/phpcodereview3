@@ -4,11 +4,13 @@
     {
       private $name;
       private $id;
+      private $stylist_id;
 
-      function __construct($name, $id = null)
+      function __construct($name, $stylist_id, $id = null)
       {
         $this->name = $name;
         $this->id = $id;
+        $this->stlyist_id = $stylist_id;
       }
       function setName($new_name)
       {
@@ -22,9 +24,13 @@
       {
         return $this->id;
       }
+      function getStylistId()
+      {
+        return $this->stylist_id;
+      }
       function save()
       {
-        $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getName()}')");
+        $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getName()}', {$this->getStylistId()};)");
         $this->id = $GLOBALS['DB']->lastInsertId();
       }
       static function getAll()
@@ -33,8 +39,9 @@
         $clients = array();
         foreach($returned_clients as $clients){
           $name = $client['name'];
+          $stylist_id = $client['stylist_id'];
           $id = $client['id'];
-          $new_client = new Client($name, $id);
+          $new_client = new Client($name, $stylist_id, $id);
         }
         return $clients;
       }
