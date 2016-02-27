@@ -10,7 +10,7 @@
       {
         $this->name = $name;
         $this->id = $id;
-        $this->stlyist_id = $stylist_id;
+        $this->stylist_id = $stylist_id;
       }
       function setName($new_name)
       {
@@ -30,7 +30,7 @@
       }
       function save()
       {
-        $GLOBALS['DB']->exec("INSERT INTO client (name) VALUES ('{$this->getName()}', {$this->getStylistId()};)");
+        $GLOBALS['DB']->exec("INSERT INTO client (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()};)");
         $this->id = $GLOBALS['DB']->lastInsertId();
       }
       static function getAll()

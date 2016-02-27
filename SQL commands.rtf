@@ -1,0 +1,190 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 \CocoaLigature0 Last login: Fri Feb 26 08:18:15 on ttys000\
+epicodus-1:code Guest$ my.sql.server start\
+-bash: my.sql.server: command not found\
+epicodus-1:code Guest$ clear\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+epicodus-1:code Guest$ mysql.server start\
+Starting MySQL\
+. SUCCESS! \
+epicodus-1:code Guest$ mysql -uroot -proot\
+mysql: [Warning] Using a password on the command line interface can be insecure.\
+Welcome to the MySQL monitor.  Commands end with ; or \\g.\
+Your MySQL connection id is 2\
+Server version: 5.7.10 Homebrew\
+\
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.\
+\
+Oracle is a registered trademark of Oracle Corporation and/or its\
+affiliates. Other names may be trademarks of their respective\
+owners.\
+\
+Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.\
+\
+mysql> CREATE DATABASE hair_salon;\
+Query OK, 1 row affected (0.00 sec)\
+\
+mysql> CREATE TABLE stylist (id serial PRIMARY KEY, name VARCHAR (255));\
+ERROR 1046 (3D000): No database selected\
+mysql> USE hair_salon;\
+Database changed\
+mysql> CREATE TABLE stylist (id serial PRIMARY KEY, name VARCHAR (255));\
+Query OK, 0 rows affected (0.05 sec)\
+\
+mysql> SHOW DATABASES;\
++--------------------+\
+| Database           |\
++--------------------+\
+| information_schema |\
+| hair_salon         |\
+| hair_salon_test    |\
+| mysql              |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+6 rows in set (0.00 sec)\
+\
+mysql> USE hair_salon;\
+Database changed\
+mysql> SHOW TABLES;\
++----------------------+\
+| Tables_in_hair_salon |\
++----------------------+\
+| stylist              |\
++----------------------+\
+1 row in set (0.00 sec)\
+\
+mysql> CREATE TABLE client (id serial PRIMARY KEY, name VARCHAR(255));\
+Query OK, 0 rows affected (0.06 sec)\
+\
+mysql> DROP DATABASE hair_salon_test;\
+Query OK, 1 row affected (0.02 sec)\
+\
+mysql> SHOW DATABASES;\
++--------------------+\
+| Database           |\
++--------------------+\
+| information_schema |\
+| hair_salon         |\
+| hair_salon_test    |\
+| mysql              |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+6 rows in set (0.00 sec)\
+\
+mysql> USE hair_salon;\
+Database changed\
+mysql> SHOW TABLES;\
++----------------------+\
+| Tables_in_hair_salon |\
++----------------------+\
+| client               |\
+| stylist              |\
++----------------------+\
+2 rows in set (0.00 sec)\
+\
+mysql> SHOW DATABASES;\
++--------------------+\
+| Database           |\
++--------------------+\
+| information_schema |\
+| hair_salon         |\
+| hair_salon_test    |\
+| mysql              |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+6 rows in set (0.00 sec)\
+\
+mysql> USE hair_salon_test;\
+Reading table information for completion of table and column names\
+You can turn off this feature to get a quicker startup with -A\
+\
+Database changed\
+mysql> SHOW TABLES;\
++---------------------------+\
+| Tables_in_hair_salon_test |\
++---------------------------+\
+| client                    |\
+| stylist                   |\
++---------------------------+\
+2 rows in set (0.00 sec)\
+\
+mysql> SHOW DATABASES;\
++--------------------+\
+| Database           |\
++--------------------+\
+| information_schema |\
+| hair_salon         |\
+| hair_salon_test    |\
+| mysql              |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+6 rows in set (0.00 sec)\
+\
+mysql> USE hair_salon_test;\
+Database changed\
+mysql> USE hair_salon;\
+Reading table information for completion of table and column names\
+You can turn off this feature to get a quicker startup with -A\
+\
+Database changed\
+mysql> SHOW TABLES;\
++----------------------+\
+| Tables_in_hair_salon |\
++----------------------+\
+| client               |\
+| stylist              |\
++----------------------+\
+2 rows in set (0.00 sec)\
+\
+mysql> SHOW DATABASES;\
++--------------------+\
+| Database           |\
++--------------------+\
+| information_schema |\
+| hair_salon         |\
+| hair_salon_test    |\
+| mysql              |\
+| performance_schema |\
+| sys                |\
++--------------------+\
+6 rows in set (0.00 sec)\
+\
+mysql> USE hair_salon_test;\
+Reading table information for completion of table and column names\
+You can turn off this feature to get a quicker startup with -A\
+\
+Database changed\
+mysql> USE hair_salon;\
+Reading table information for completion of table and column names\
+You can turn off this feature to get a quicker startup with -A\
+\
+Database changed\
+mysql> }

@@ -24,9 +24,11 @@
       {
         //Arrange
         $name = "Mulder";
-        $test_client = new Client($name);
+        $stylist_id = 1;
+        $id = 1;
+        $test_client = new Client($name, $stylist_id, $id);
         //Act
-        $result = $test_client->getName();
+        $result = $test_client->getName($name, $stylist_id, $id);
         //Assert
         $this->assertEquals($name, $result);
       }
@@ -35,7 +37,8 @@
         //Arrange
         $name = "Mulder";
         $id = 1;
-        $test_client = new Client($name, $id);
+        $stylist_id = 1;
+        $test_client = new Client($name, $stylist_id,$id);
         //Act
         $result = $test_client->getId();
         //Assert
