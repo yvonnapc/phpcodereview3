@@ -48,10 +48,12 @@
       {
         //Arrange
         $name = "Yvonna";
-        $test_client = new Client($name);
+        $stylist_id = 1;
+        $test_client = new Client($name, $stylist_id);
         $test_client->save();
         //Act
         $result = Client::getAll();
+        var_dump($result);
         //Assert
         $this->assertEquals($test_client, $result[0]);
       }
@@ -59,12 +61,13 @@
       {
         //Arrange
         $name = "Yvonna";
+        $stylist_id = 1;
         $id = null;
-        $test_client = new Client($name, $id);
+        $test_client = new Client($name, $stylist_id, $id);
         $test_client->save();
 
         $name2 = "Alexandra";
-        $test_client2 = new Client($name2);
+        $test_client2 = new Client($name2, $stylist_id, $id);
         $test_client2->save();
         //Act
         $result = Client::getAll();
@@ -76,9 +79,10 @@
         //Arrange
         $name = "Yvonna";
         $name2 = "Alexandra";
-        $test_client = new Client($name);
+        $stylist_id = 1;
+        $test_client = new Client($name, $stylist_id);
         $test_client->save();
-        $test_client2 = new Client($name2);
+        $test_client2 = new Client($name2, $stylist_id);
         $test_client2->save();
         //Act
         Client::deleteAll();
