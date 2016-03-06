@@ -3,8 +3,8 @@
     class Client
     {
       private $name;
-      private $id;
       private $stylist_id;
+      private $id;
 
       function __construct($name, $stylist_id, $id = null)
       {
@@ -30,12 +30,12 @@
       }
       function save()
       {
-        $GLOBALS['DB']->exec("INSERT INTO client (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()});");
+        $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()});");
         $this->id = $GLOBALS['DB']->lastInsertId();
       }
       static function getAll()
       {
-        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client;");
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
         $clients = array();
         foreach($returned_clients as $client){
           $name = $client['name'];

@@ -4,8 +4,8 @@
     require_once __DIR__."/../src/Stylist.php";
 
     $app = new Silex\Application();
-    
-    $server = 'mysql:host=localhost;dbname=hair_salon';
+
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -17,19 +17,19 @@
 
     $app->get("/", function() use ($app){
        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
-   });
-
-
-    $app->post("/stylists", function() use($app){
-        $stylist = new Stylist($_POST['name']);
-        $stylist->save();
-        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
+   $app['debug'] = true;
 
-    $app->post("/delete_stylists", function() use($app){
-        Stylist::deleteAll();
-        return $app['twig']->render('index.html.twig');
-    });
+    // $app->post("/stylists", function() use($app){
+    //     $stylist = new Stylist($_POST['name']);
+    //     $stylist->save();
+    //     return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    // });
+    //
+    // $app->post("/delete_stylists", function() use($app){
+    //     Stylist::deleteAll();
+    //     return $app['twig']->render('index.html.twig');
+    // });
 
     return $app;
  ?>
