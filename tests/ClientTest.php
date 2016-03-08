@@ -8,7 +8,7 @@
   require_once "src/Stylist.php";
   require_once "src/Client.php";
 
-  $server = 'mysql:host=localhost;dbname=hair_salon_test';
+  $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
   $username = 'root';
   $password = 'root';
   $DB = new PDO($server, $username, $password);
@@ -53,7 +53,6 @@
         $test_client->save();
         //Act
         $result = Client::getAll();
-        var_dump($result);
         //Assert
         $this->assertEquals($test_client, $result[0]);
       }
@@ -62,11 +61,11 @@
         //Arrange
         $name = "Yvonna";
         $stylist_id = 1;
-        $id = null;
         $test_client = new Client($name, $stylist_id, $id);
         $test_client->save();
 
         $name2 = "Alexandra";
+        $stylist_id = 2;
         $test_client2 = new Client($name2, $stylist_id, $id);
         $test_client2->save();
         //Act
@@ -78,10 +77,11 @@
       {
         //Arrange
         $name = "Yvonna";
-        $name2 = "Alexandra";
         $stylist_id = 1;
         $test_client = new Client($name, $stylist_id);
         $test_client->save();
+
+        $name2 = "Alexandra";
         $test_client2 = new Client($name2, $stylist_id);
         $test_client2->save();
         //Act

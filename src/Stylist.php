@@ -24,7 +24,7 @@
         }
         function save()
         {
-          $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getName()}')");
+          $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getName()}')");
           $this->id = $GLOBALS['DB']->lastInsertId();
         }
         static function getAll()
@@ -41,7 +41,7 @@
         }
         static function deleteAll()
         {
-          $GLOBALS['DB']->exec("DELETE FROM stylist;");
+          $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
         static function find($search_id)
         {
@@ -57,6 +57,31 @@
             }
             return $found_stylist;
         }
+
+        function getClients()
+        {
+            $clients = array();
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()}");
+            foreach($returned_clients as $client){
+                $name = $client['name'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                $new_client = new Client($name, $stylist_id, $id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
+
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+        function delete()
+       {
+           $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+           $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+       }
 
     }
  ?>

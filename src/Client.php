@@ -50,6 +50,20 @@
       {
         $GLOBALS['DB']->exec("DELETE FROM client;");
       }
+      // function getStylist()
+      // {
+      //    $found_stylist = null;
+      //    $stylists = Stylist::getAll();
+      //    foreach($stylists as $stylist)
+      //        {
+      //            $stylist_id = $stylist->getId();
+      //            if($stylist_id == $this->getClientId())
+      //            {
+      //                $found_stylist = $stylist;
+      //            }
+      //        }
+      //        return $found_stylist;
+      //  }
       static function find($search_id)
       {
         $found_client = null;
@@ -62,6 +76,10 @@
             }
         } return $found_client;
       }
+      function delete()
+       {
+           $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+       }
 
     }
 

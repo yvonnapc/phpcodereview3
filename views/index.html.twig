@@ -18,11 +18,11 @@
         {% endif %}
 
         <h4>Add a Stylist here:</h4>
-          <form action="/stylists" method="post">
-              <label for="stylist_name">Stylist Name:</label>
-              <input name="stylist_name" type="text">
+          <form action="/add_stylist" method="post">
+              <label for="name">Stylist Name:</label>
+              <input name="name" type="text">
 
-              <button type="submit">Add</button>
+              <button class="btn-info" type="submit">Add</button>
           </form>
 
         <h4>Clear Stylists</h4>
