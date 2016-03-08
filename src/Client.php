@@ -48,7 +48,7 @@
       }
       static function deleteAll()
       {
-        $GLOBALS['DB']->exec("DELETE FROM client;");
+        $GLOBALS['DB']->exec("DELETE FROM clients;");
       }
       // function getStylist()
       // {

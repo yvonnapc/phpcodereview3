@@ -22,11 +22,11 @@
 
           {% if clients is empty %}
                 <h4>{{ stylist.getName }} does not have any clients. Would you like to schedule an appointment with {{ stylist.getName }}?</h4>
-            {% endif %} 
+            {% endif %}
 
             <h4>Add a client for {{ stylist.getName }}:<h4>
                 <form action="/add_client" method="post">
-                    <input name="id" type="hidden" value="{{ stylist.getId() }}">
+                    <input name="stylist_id" type="hidden" value="{{ stylist.getId }}">
 
                     <label for="name">Client Name:</label>
                     <input name ="name" type="text" required>
