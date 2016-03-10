@@ -46,7 +46,7 @@
         $new_name = $_POST['new_name'];
         $stylist = Stylist::find($id);
         $stylist->update($new_name);
-        return $app['twig']->render('clients.html.twig', array('stylist'=> Stylist::getAll(), 'clients' => $stylist->getClients()));
+        return $app['twig']->render('clients.html.twig', array('stylist'=> $stylist, 'clients' => $stylist->getClients()));
     });
 
     $app->post("/add_client", function() use ($app){
