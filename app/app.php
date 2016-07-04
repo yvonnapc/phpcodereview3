@@ -18,6 +18,11 @@
     $app->get("/", function() use ($app){
        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
+
+    $app->get("/about", function() use ($app){
+      return $app['twig']->render('about.html.twig');
+    });
+    
    $app['debug'] = true;
 
     $app->post("/add_stylist", function() use($app){

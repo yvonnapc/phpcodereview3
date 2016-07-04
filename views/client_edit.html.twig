@@ -8,21 +8,37 @@
     </head>
     <body>
         <div class="container">
+          <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li><a href='/'>Home</a></li>
+                <li><a href="#">Stylists</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div class="edit-client">
             <h2>Edit {{ client.getName }}'s name!</h2>
                 <form action="/clients/{{ client.getId }}" method="post">
                     <input name="_method" type="hidden" value="patch">
 
-                    <label for="new_name">Edit name:</label>
-                    <input id="new_name" name="new_name" type="text" required>
+                    <label for="new_name">New Name</label>
+                    <input id="new_name" name="new_name" type="text" required><br>
 
-                    <button class="btn btn-danger"  type="submit">Edit</button>
+                    <button class="btn btn-warning"  type="submit">Edit</button>
                 </form>
-
+                <br>
                 <form action="/clients/{{ client.getId }}" method="post">
                     <input name="_method" type="hidden" value="delete">
-                    <button class="btn btn-danger" type="submit">Delete this client</button>
+                    <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
-                <h2><a href="/">Home</a></h2>
+          </div>
+
+                <div class="center">
+                  <h1>FIFTH ST. SALON</h1>
+                </div>
+
         </div>
     </body>
 </html>

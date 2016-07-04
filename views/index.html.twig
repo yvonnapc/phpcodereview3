@@ -2,36 +2,53 @@
 <html>
   <head>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
    <link rel='stylesheet' href='/css/styles.css'>
     <meta charset="utf-8">
     <title>Hair Salon</title>
   </head>
   <body>
     <div class="container">
-        {% if stylists is not empty %}
-        <h4>Our Available Stylists:</h4>
-        <ul>
-            {% for stylist in stylists %}
-            <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <h1>Empty</h1>
-        {% endif %}
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li><a href='/'>Home</a></li>
+            <li><a href="#">Stylists</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
 
-        <h4>Add a Stylist here:</h4>
-          <form action="/add_stylist" method="post">
-              <label for="name">Stylist Name:</label>
-              <input name="name" type="text">
+      <div class="row">
+        <div class="lists col-xs-4">
+          {% if stylists is not empty %}
+          <h3>Stylists:</h3>
+          <ul>
+              {% for stylist in stylists %}
+              <h4><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></h4>
+              {% endfor %}
+              <form action="/delete_stylists" method="post">
+                <button class="btn btn-danger" type="submit">C L E A R</button>
+              </form>
+          </ul>
+          {% else %}
+          <h3>No Stylists Yet</h3>
+          {% endif %}
+        </div>
 
-              <button class="btn-info" type="submit">Add</button>
-          </form>
+        <div class="forms col-xs-4">
+          <h4>ADD STYLIST</h4>
+            <form action="/add_stylist" method="post">
+              <input placeholder="Stylist Name" name="name" type="text">
+              <button id="addStylistButton" class="btn btn-info" type="submit">Add</button>
+            </form>
+        </div>
+      </div>
 
-        <h4>Clear Stylists</h4>
-          <form action="/delete_stylists" method="post">
-              <button type="submit">CLEAR</button>
-          </form>
+      <div class="center">
+        <h1>FIFTH ST. SALON</h1>
+      </div>
     </div>
-
   </body>
 </html>

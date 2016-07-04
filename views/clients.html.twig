@@ -2,39 +2,59 @@
 <html>
     <head>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
         <link rel='stylesheet' href='/css/styles.css'>
         <meta charset="utf-8">
         <title></title>
     </head>
     <body>
-        <div class="container">
+      <div class="container">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li><a href='/'>Home</a></li>
+              <li><a href="#">Stylists</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="row">
+          <div class="lists col-xs-4">
             <h1>{{ stylist.getName }}</h1>
-            <h4><a href="/stylists/{{ stylist.getId }}/edit">Edit the name of this stylist</a></h4>
 
             {% if clients is not empty %}
-                <h4>Here is a list of clients {{ stylist.getName }} serves:<h4>
-                <ul>
-                    {% for client in clients %}
-                        <li><a href="/clients/{{ client.getId }}">{{ client.getName }}</a></li>
-                    {% endfor %}
-                </ul>
-                {% else %}
+              <h4>Clients {{ stylist.getName }} serves:<h4>
+              <ul>
+                {% for client in clients %}
+                <h4><a href="/clients/{{ client.getId }}">{{ client.getName }}</a></h4>
+                {% endfor %}
+              </ul>
+              {% else %}
                 <h4>No Clients</h4>
             {% endif %}
+          </div>
 
 
+        <div class="forms col-xs-4">
+          <h4>Add a client for {{ stylist.getName }}:<h4>
+          <form action="/add_client" method="post">
+            <input name="stylist_id" type="hidden" value="{{ stylist.getId }}">
 
-            <h4>Add a client for {{ stylist.getName }}:<h4>
-                <form action="/add_client" method="post">
-                    <input name="stylist_id" type="hidden" value="{{ stylist.getId }}">
+            <label for="name">Client Name:</label>
+            <input name ="name" type="text" required>
 
-                    <label for="name">Client Name:</label>
-                    <input name ="name" type="text" required>
-
-                    <button class="btn btn-danger"  type="submit">Add</button>
-                </form>
-
-            <p><a href='/'>Home</a></p>
+            <button class="btn btn-success"  type="submit">Add</button>
+          </form>
+          <h4><a href="/stylists/{{ stylist.getId }}/edit">Edit the name of this stylist</a></h4>
         </div>
+
+        <div class="center">
+          <h1>FIFTH ST. SALON</h1>
+        </div>
+
+      </div>
+      </div>
     </body>
 </html>

@@ -8,17 +8,33 @@
     </head>
     <body>
         <div class="container">
+          <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Stylists</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="lists">
             <h2>Edit {{ stylist.getName }}'s name!</h2>
-                <form action="/stylists/{{ stylist.getId }}" method="post">
-                    <input name="_method" type="hidden" value="patch">
+              <form action="/stylists/{{ stylist.getId }}" method="post">
+                <input name="_method" type="hidden" value="patch">
 
-                    <label for="new_name">Edit name:</label>
-                    <input id="new_name" name="new_name" type="text" required>
+                <label for="new_name">Edit name:</label>
+                <input id="new_name" name="new_name" type="text" required>
 
-                    <button class="btn btn-danger" type="submit">Edit</button>
-                </form>
+                <button class="btn btn-danger" type="submit">Edit</button>
+              </form>
+          </div>
 
-                <h2><a href="/">Home</a></h2>
+          <div class="center">
+            <h1>FIFTH ST. SALON</h1>
+          </div>
+          
         </div>
     </body>
 </html>
